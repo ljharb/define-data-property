@@ -1,0 +1,35 @@
+{
+	"name": "define-data-property",
+	"version": "0.0.0",
+	"description": "Define a data property on an object. Will fall back to assignment in an engine without descriptors.",
+	"main": "index.js",
+	"exports": {
+		".": "./index.js",
+		"./package.json": "./package.json"
+	},
+	"scripts": {
+		"test": "echo \"Error: no test specified\" && exit 1"
+	},
+	"repository": {
+		"type": "git",
+		"url": "git+https://github.com/ljharb/define-data-property.git"
+	},
+	"keywords": [
+		"define",
+		"data",
+		"property",
+		"object",
+		"accessor",
+		"javascript",
+		"ecmascript",
+		"enumerable",
+		"configurable",
+		"writable"
+	],
+	"author": "Jordan Harband <ljharb@gmail.com>",
+	"license": "MIT",
+	"bugs": {
+		"url": "https://github.com/ljharb/define-data-property/issues"
+	},
+	"homepage": "https://github.com/ljharb/define-data-property#readme"
+}
