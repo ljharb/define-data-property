@@ -5,6 +5,14 @@ All notable changes to this project will be documented in this file.
 The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/)
 and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
+## [v1.0.1](https://github.com/ljharb/define-data-property/compare/v1.0.0...v1.0.1) - 2023-09-12
+
+### Commits
+
+- [meta] add TS types [`43d763c`](https://github.com/ljharb/define-data-property/commit/43d763c6c883f652de1c9c02ef6216ee507ffa69)
+- [Dev Deps] update `@types/tape`, `typescript` [`f444985`](https://github.com/ljharb/define-data-property/commit/f444985811c36f3e6448a03ad2f9b7898917f4c7)
+- [meta] add `safe-publish-latest`, [`172bb10`](https://github.com/ljharb/define-data-property/commit/172bb10890896ebb160e64398f6ee55760107bee)
+
 ## v1.0.0 - 2023-09-12
 
 ### Commits
