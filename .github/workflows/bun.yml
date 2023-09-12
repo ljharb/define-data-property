@@ -1,0 +1,18 @@
+name: 'Tests: bun'
+
+on: [pull_request, push]
+
+jobs:
+  tests:
+    uses: ljharb/actions/.github/workflows/bun.yml@main
+    with:
+      range: 'latest'
+    #   type: minors
+      command: npm run tests-only
+
+  node:
+    name: 'bun'
+    needs: [tests]
+    runs-on: ubuntu-latest
+    steps:
+      - run: 'echo tests completed'
