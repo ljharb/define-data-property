@@ -1,6 +1,6 @@
 {
 	"name": "define-data-property",
-	"version": "0.0.0",
+	"version": "1.0.0",
 	"description": "Define a data property on an object. Will fall back to assignment in an engine without descriptors.",
 	"main": "index.js",
 	"exports": {
