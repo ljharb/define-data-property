@@ -135,3 +135,6 @@ package-lock.json
 yarn.lock
 
 .npmignore
+
+*.ts
+*.ts.map
