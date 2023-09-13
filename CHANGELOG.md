@@ -5,6 +5,13 @@ All notable changes to this project will be documented in this file.
 The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/)
 and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
+## [v1.1.0](https://github.com/ljharb/define-data-property/compare/v1.0.1...v1.1.0) - 2023-09-13
+
+### Commits
+
+- [New] add `loose` arg [`155235a`](https://github.com/ljharb/define-data-property/commit/155235a4c4d7741f6de01cd87c99599a56654b72)
+- [New] allow `null` to be passed for the non* args [`7d2fa5f`](https://github.com/ljharb/define-data-property/commit/7d2fa5f06be0392736c13b126f7cd38979f34792)
+
 ## [v1.0.1](https://github.com/ljharb/define-data-property/compare/v1.0.0...v1.0.1) - 2023-09-12
 
 ### Commits
