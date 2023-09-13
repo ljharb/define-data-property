@@ -11,7 +11,7 @@ var $TypeError = GetIntrinsic('%TypeError%');
 
 var gopd = require('gopd');
 
-/** @type {(obj: Record<PropertyKey, unknown>, property: PropertyKey, value: unknown, nonEnumerable?: boolean | null, nonWritable?: boolean | null, nonConfigurable?: boolean | null) => void} */
+/** @type {(obj: Record<PropertyKey, unknown>, property: PropertyKey, value: unknown, nonEnumerable?: boolean | null, nonWritable?: boolean | null, nonConfigurable?: boolean | null, loose?: boolean) => void} */
 module.exports = function defineDataProperty(
 	obj,
 	property,
@@ -32,10 +32,14 @@ module.exports = function defineDataProperty(
 	if (arguments.length > 5 && typeof arguments[5] !== 'boolean' && arguments[5] !== null) {
 		throw new $TypeError('`nonConfigurable`, if provided, must be a boolean or null');
 	}
+	if (arguments.length > 6 && typeof arguments[6] !== 'boolean') {
+		throw new $TypeError('`loose`, if provided, must be a boolean');
+	}
 
 	var nonEnumerable = arguments.length > 3 ? arguments[3] : null;
 	var nonWritable = arguments.length > 4 ? arguments[4] : null;
 	var nonConfigurable = arguments.length > 5 ? arguments[5] : null;
+	var loose = arguments.length > 6 ? arguments[6] : false;
 
 	/* @type {false | TypedPropertyDescriptor<unknown>} */
 	var desc = !!gopd && gopd(obj, property);
@@ -47,7 +51,7 @@ module.exports = function defineDataProperty(
 			value: value,
 			writable: nonWritable === null && desc ? desc.writable : !nonWritable
 		});
-	} else if (!nonEnumerable && !nonWritable && !nonConfigurable) {
+	} else if (loose || (!nonEnumerable && !nonWritable && !nonConfigurable)) {
 		// must fall back to [[Set]], and was not explicitly asked to make non-enumerable, non-writable, or non-configurable
 		obj[property] = value; // eslint-disable-line no-param-reassign
 	} else {

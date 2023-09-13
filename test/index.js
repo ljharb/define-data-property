@@ -81,9 +81,75 @@ test('defineDataProperty', function (t) {
 		st.ok(has(obj, 'explicit2'), 'has expected own property (explicit writable)');
 		st.equal(obj.explicit2, 'new value', 'has new expected value (explicit writable)');
 
-		defineDataProperty(obj, 'explicit3', 'new value', false, false);
+		defineDataProperty(obj, 'explicit3', 'new value', false, false, false);
 		st.ok(has(obj, 'explicit3'), 'has expected own property (explicit configurable)');
 		st.equal(obj.explicit3, 'new value', 'has new expected value (explicit configurable)');
+
+		st.end();
+	});
+
+	t.test('loose mode', function (st) {
+		var obj = { existing: 'existing property' };
+
+		defineDataProperty(obj, 'added', 'added value 1', true, null, null, true);
+		st.deepEqual(
+			getOwnPropertyDescriptors(obj),
+			{
+				existing: {
+					configurable: true,
+					enumerable: true,
+					value: 'existing property',
+					writable: true
+				},
+				added: {
+					configurable: true,
+					enumerable: !hasPropertyDescriptors,
+					value: 'added value 1',
+					writable: true
+				}
+			},
+			'in loose mode, obj still adds property 1'
+		);
+
+		defineDataProperty(obj, 'added', 'added value 2', false, true, null, true);
+		st.deepEqual(
+			getOwnPropertyDescriptors(obj),
+			{
+				existing: {
+					configurable: true,
+					enumerable: true,
+					value: 'existing property',
+					writable: true
+				},
+				added: {
+					configurable: true,
+					enumerable: true,
+					value: 'added value 2',
+					writable: !hasPropertyDescriptors
+				}
+			},
+			'in loose mode, obj still adds property 2'
+		);
+
+		defineDataProperty(obj, 'added', 'added value 3', false, false, true, true);
+		st.deepEqual(
+			getOwnPropertyDescriptors(obj),
+			{
+				existing: {
+					configurable: true,
+					enumerable: true,
+					value: 'existing property',
+					writable: true
+				},
+				added: {
+					configurable: !hasPropertyDescriptors,
+					enumerable: true,
+					value: 'added value 3',
+					writable: true
+				}
+			},
+			'in loose mode, obj still adds property 3'
+		);
 
 		st.end();
 	});

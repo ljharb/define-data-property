@@ -9,6 +9,10 @@
 
 Define a data property on an object. Will fall back to assignment in an engine without descriptors.
 
+The three `non*` argument can also be passed `null`, which will use the existing state if available.
+
+The `loose` argument will mean that if you attempt to set a non-normal data property, in an environment without descriptor support, it will fall back to normal assignment.
+
 ## Usage
 
 ```javascript
@@ -21,9 +25,10 @@ defineDataProperty(
 	obj,
 	'key2',
 	'value',
-	true, // nonEnumerable
-	false, // nonWritable
-	true // nonConfigurable
+	true, // nonEnumerable, optional
+	false, // nonWritable, optional
+	true, // nonConfigurable, optional
+	false // loose, optional
 );
 
 assert.deepEqual(
