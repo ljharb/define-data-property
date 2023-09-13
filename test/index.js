@@ -31,26 +31,28 @@ test('defineDataProperty', function (t) {
 		});
 
 		forEach(v.nonBooleans, function (nonBoolean) {
-			st['throws'](
+			if (nonBoolean !== null) {
+				st['throws'](
 				// @ts-expect-error
-				function () { defineDataProperty({}, 'key', 'value', nonBoolean); },
-				TypeError,
-				'throws on non-boolean nonEnumerable: ' + inspect(nonBoolean)
-			);
+					function () { defineDataProperty({}, 'key', 'value', nonBoolean); },
+					TypeError,
+					'throws on non-boolean nonEnumerable: ' + inspect(nonBoolean)
+				);
 
-			st['throws'](
+				st['throws'](
 				// @ts-expect-error
-				function () { defineDataProperty({}, 'key', 'value', false, nonBoolean); },
-				TypeError,
-				'throws on non-boolean nonWritable: ' + inspect(nonBoolean)
-			);
+					function () { defineDataProperty({}, 'key', 'value', false, nonBoolean); },
+					TypeError,
+					'throws on non-boolean nonWritable: ' + inspect(nonBoolean)
+				);
 
-			st['throws'](
+				st['throws'](
 				// @ts-expect-error
-				function () { defineDataProperty({}, 'key', 'value', false, false, nonBoolean); },
-				TypeError,
-				'throws on non-boolean nonConfigurable: ' + inspect(nonBoolean)
-			);
+					function () { defineDataProperty({}, 'key', 'value', false, false, nonBoolean); },
+					TypeError,
+					'throws on non-boolean nonConfigurable: ' + inspect(nonBoolean)
+				);
+			}
 		});
 
 		st.end();

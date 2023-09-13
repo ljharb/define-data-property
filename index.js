@@ -11,7 +11,7 @@ var $TypeError = GetIntrinsic('%TypeError%');
 
 var gopd = require('gopd');
 
-/** @type {(obj: Record<PropertyKey, unknown>, property: PropertyKey, value: unknown, nonEnumerable?: boolean, nonWritable?: boolean, nonConfigurable?: boolean) => void} */
+/** @type {(obj: Record<PropertyKey, unknown>, property: PropertyKey, value: unknown, nonEnumerable?: boolean | null, nonWritable?: boolean | null, nonConfigurable?: boolean | null) => void} */
 module.exports = function defineDataProperty(
 	obj,
 	property,
@@ -23,14 +23,14 @@ module.exports = function defineDataProperty(
 	if (typeof property !== 'string' && typeof property !== 'symbol') {
 		throw new $TypeError('`property` must be a string or a symbol`');
 	}
-	if (arguments.length > 3 && typeof arguments[3] !== 'boolean') {
-		throw new $TypeError('`nonEnumerable`, if provided, must be a boolean`');
+	if (arguments.length > 3 && typeof arguments[3] !== 'boolean' && arguments[3] !== null) {
+		throw new $TypeError('`nonEnumerable`, if provided, must be a boolean or null');
 	}
-	if (arguments.length > 4 && typeof arguments[4] !== 'boolean') {
-		throw new $TypeError('`nonWritable`, if provided, must be a boolean`');
+	if (arguments.length > 4 && typeof arguments[4] !== 'boolean' && arguments[4] !== null) {
+		throw new $TypeError('`nonWritable`, if provided, must be a boolean or null');
 	}
-	if (arguments.length > 5 && typeof arguments[5] !== 'boolean') {
-		throw new $TypeError('`nonConfigurable`, if provided, must be a boolean`');
+	if (arguments.length > 5 && typeof arguments[5] !== 'boolean' && arguments[5] !== null) {
+		throw new $TypeError('`nonConfigurable`, if provided, must be a boolean or null');
 	}
 
 	var nonEnumerable = arguments.length > 3 ? arguments[3] : null;
