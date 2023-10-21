@@ -58,7 +58,7 @@
 	"dependencies": {
 		"get-intrinsic": "^1.2.2",
 		"gopd": "^1.0.1",
-		"has-property-descriptors": "^1.0.0"
+		"has-property-descriptors": "^1.0.1"
 	},
 	"devDependencies": {
 		"@ljharb/eslint-config": "^21.1.0",
