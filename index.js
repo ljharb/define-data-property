@@ -19,7 +19,7 @@ var $TypeError = require('es-errors/type');
 
 var gopd = require('gopd');
 
-/** @type {(obj: Record<PropertyKey, unknown>, property: PropertyKey, value: unknown, nonEnumerable?: boolean | null, nonWritable?: boolean | null, nonConfigurable?: boolean | null, loose?: boolean) => void} */
+/** @type {import('.')} */
 module.exports = function defineDataProperty(
 	obj,
 	property,
