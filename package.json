@@ -65,6 +65,7 @@
 		"@types/has-property-descriptors": "^1.0.3",
 		"@types/object-inspect": "^1.8.4",
 		"@types/object.getownpropertydescriptors": "^2.1.4",
+		"@types/reflect.ownkeys": "^1.1.0",
 		"@types/tape": "^5.6.4",
 		"aud": "^2.0.4",
 		"auto-changelog": "^2.4.0",
@@ -99,8 +100,7 @@
 	},
 	"publishConfig": {
 		"ignore": [
-			".github/workflows",
-			"types/reflect.ownkeys"
+			".github/workflows"
 		]
 	}
 }
