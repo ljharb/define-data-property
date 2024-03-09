@@ -81,7 +81,7 @@
 		"object.getownpropertydescriptors": "^2.1.7",
 		"reflect.ownkeys": "^1.1.4",
 		"safe-publish-latest": "^2.0.0",
-		"tape": "^5.7.4",
+		"tape": "^5.7.5",
 		"typescript": "next"
 	},
 	"engines": {
