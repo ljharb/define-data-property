@@ -90,6 +90,7 @@ test('defineDataProperty', function (t) {
 	});
 
 	t.test('loose mode', { skip: !hasPropertyDescriptors }, function (st) {
+		/** @type {{ existing: 'existing property', added?: string }} */
 		var obj = { existing: 'existing property' };
 
 		defineDataProperty(obj, 'added', 'added value 1', true, null, null, true);
@@ -188,7 +189,7 @@ test('defineDataProperty', function (t) {
 	});
 
 	t.test('new non-normal data property, ES5+', { skip: !hasPropertyDescriptors }, function (st) {
-		/** @type {Record<PropertyKey, string>} */
+		/** @type {Record<PropertyKey, string | null>} */
 		var obj = { existing: 'existing property' };
 
 		defineDataProperty(obj, 'nonEnum', null, true);
@@ -303,12 +304,14 @@ test('defineDataProperty', function (t) {
 		var frozen = Object.freeze({ existing: true });
 
 		st['throws'](
+			// @ts-expect-error
 			function () { defineDataProperty(frozen, 'existing', 'new value'); },
 			TypeError,
 			'frozen object can not modify an existing property'
 		);
 
 		st['throws'](
+			// @ts-expect-error
 			function () { defineDataProperty(frozen, 'new', 'new property'); },
 			TypeError,
 			'frozen object can not add a new property'
@@ -318,6 +321,7 @@ test('defineDataProperty', function (t) {
 	});
 
 	t.test('sealed object, ES5+', { skip: !hasPropertyDescriptors }, function (st) {
+		/** @type {{ existing: unknown }} */
 		var sealed = Object.seal({ existing: true });
 		st.deepEqual(
 			Object.getOwnPropertyDescriptor(sealed, 'existing'),
@@ -344,6 +348,7 @@ test('defineDataProperty', function (t) {
 		);
 
 		st['throws'](
+			// @ts-expect-error
 			function () { defineDataProperty(sealed, 'new', 'new property'); },
 			TypeError,
 			'sealed object can not add a new property'
@@ -353,6 +358,7 @@ test('defineDataProperty', function (t) {
 	});
 
 	t.test('nonextensible object, ES5+', { skip: !hasPropertyDescriptors }, function (st) {
+		/** @type {{ existing: unknown }} */
 		var nonExt = Object.preventExtensions({ existing: true });
 
 		st.deepEqual(
@@ -380,6 +386,7 @@ test('defineDataProperty', function (t) {
 		);
 
 		st['throws'](
+			// @ts-expect-error
 			function () { defineDataProperty(nonExt, 'new', 'new property'); },
 			TypeError,
 			'non-extensible object can not add a new property'

@@ -32,12 +32,15 @@ module.exports = function defineDataProperty(
 		throw new $TypeError('`loose`, if provided, must be a boolean');
 	}
 
+	/** @type {Parameters<typeof defineDataProperty>[3]} */
 	var nonEnumerable = arguments.length > 3 ? arguments[3] : null;
+	/** @type {Parameters<typeof defineDataProperty>[4]} */
 	var nonWritable = arguments.length > 4 ? arguments[4] : null;
+	/** @type {Parameters<typeof defineDataProperty>[5]} */
 	var nonConfigurable = arguments.length > 5 ? arguments[5] : null;
+	/** @type {Parameters<typeof defineDataProperty>[6]} */
 	var loose = arguments.length > 6 ? arguments[6] : false;
 
-	/* @type {false | TypedPropertyDescriptor<unknown>} */
 	var desc = !!gopd && gopd(obj, property);
 
 	if ($defineProperty) {
@@ -48,6 +51,7 @@ module.exports = function defineDataProperty(
 			writable: nonWritable === null && desc ? desc.writable : !nonWritable
 		});
 	} else if (loose || (!nonEnumerable && !nonWritable && !nonConfigurable)) {
+		// @ts-expect-error ts(2862)
 		// must fall back to [[Set]], and was not explicitly asked to make non-enumerable, non-writable, or non-configurable
 		obj[property] = value; // eslint-disable-line no-param-reassign
 	} else {

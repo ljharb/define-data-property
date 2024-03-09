@@ -6,6 +6,7 @@
 	"rules": {
 		"complexity": 0,
 		"id-length": 0,
+		"multiline-comment-style": "off",
 		"new-cap": ["error", {
 			"capIsNewExceptions": [
 				"GetIntrinsic",
