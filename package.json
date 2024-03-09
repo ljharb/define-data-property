@@ -14,6 +14,7 @@
 		"prepublish": "not-in-publish || npm run prepublishOnly",
 		"prepublishOnly": "safe-publish-latest",
 		"tsc": "tsc -p .",
+		"posttsc": "attw -P",
 		"prelint": "evalmd README.md",
 		"lint": "eslint --ext=js,mjs .",
 		"postlint": "npm run tsc",
@@ -55,6 +56,7 @@
 		"gopd": "^1.0.1"
 	},
 	"devDependencies": {
+		"@arethetypeswrong/cli": "^0.15.1",
 		"@ljharb/eslint-config": "^21.1.0",
 		"@ljharb/tsconfig": "^0.1.1",
 		"@types/call-bind": "^1.0.5",
