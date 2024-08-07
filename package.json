@@ -58,7 +58,7 @@
 	"devDependencies": {
 		"@arethetypeswrong/cli": "^0.15.3",
 		"@ljharb/eslint-config": "^21.1.1",
-		"@ljharb/tsconfig": "^0.1.1",
+		"@ljharb/tsconfig": "^0.2.0",
 		"@types/call-bind": "^1.0.5",
 		"@types/define-properties": "^1.1.5",
 		"@types/es-value-fixtures": "^1.4.4",
