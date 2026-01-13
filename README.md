@@ -63,5 +63,5 @@ assert.deepEqual(
 [downloads-url]: https://npm-stat.com/charts.html?package=define-data-property
 [codecov-image]: https://codecov.io/gh/ljharb/define-data-property/branch/main/graphs/badge.svg
 [codecov-url]: https://app.codecov.io/gh/ljharb/define-data-property/
-[actions-image]: https://img.shields.io/endpoint?url=https://github-actions-badge-u3jn4tfpocch.runkit.sh/ljharb/define-data-property
+[actions-image]: https://img.shields.io/github/check-runs/ljharb/define-data-property/main
 [actions-url]: https://github.com/ljharb/define-data-property/actions
